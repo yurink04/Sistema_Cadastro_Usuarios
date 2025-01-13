@@ -1,4 +1,4 @@
-// Função para exibir e fechar modais
+// Funções de modal
 const showModal = (modal) => modal?.classList.add('show');
 const hideModal = (modal) => modal?.classList.remove('show');
 
@@ -86,21 +86,25 @@ const handleListagem = () => {
     if (!userList) return;
 
     const fetchUsers = async () => {
-        const response = await fetch('backend/listar.php');
-        const users = await response.json();
-        userList.innerHTML = users
-            .map(
-                (user) => `
-                <tr>
-                    <td>${user.nome}</td>
-                    <td>${user.email}</td>
-                    <td>
-                        <button onclick="editUser(${user.id})">Editar</button>
-                        <button onclick="deleteUser(${user.id})">Excluir</button>
-                    </td>
-                </tr>`
-            )
-            .join('');
+        try {
+            const response = await fetch('backend/listar.php');
+            if (!response.ok) throw new Error('Erro ao buscar usuários');
+            const users = await response.json();
+            userList.innerHTML = users.length
+                ? users.map(user => `
+                    <tr>
+                        <td>${user.nome}</td>
+                        <td>${user.email}</td>
+                        <td>
+                            <button onclick="editUser(${user.id})">Editar</button>
+                            <button onclick="deleteUser(${user.id})">Excluir</button>
+                        </td>
+                    </tr>`).join('')
+                : '<tr><td colspan="3">Nenhum usuário encontrado.</td></tr>';
+        } catch (error) {
+            console.error(error);
+            alert('Erro ao carregar a lista de usuários.');
+        }
     };
 
     fetchUsers();
@@ -134,6 +138,11 @@ const logoutModal = document.getElementById('logoutModal');
 const confirmLogout = document.getElementById('confirmLogout');
 const cancelLogout = document.getElementById('cancelLogout');
 
-logoutButton?.addEventListener('click', () => showModal(logoutModal));
-confirmLogout?.addEventListener('click', () => (window.location.href = 'login.html'));
-cancelLogout?.addEventListener('click', () => hideModal(logoutModal));
+if (logoutButton && logoutModal) {
+    logoutButton.addEventListener('click', () => showModal(logoutModal));
+    confirmLogout?.addEventListener('click', () => {
+        hideModal(logoutModal);
+        window.location.href = 'login.html';
+    });
+    cancelLogout?.addEventListener('click', () => hideModal(logoutModal));
+}

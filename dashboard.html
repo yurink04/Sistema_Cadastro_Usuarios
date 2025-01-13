@@ -8,32 +8,27 @@
 </head>
 <body>
     <header>
-        <h1>Home
-        </h1>
+        <h1>Sistema de Cadastros</h1>
     </header>
     <main class="tela-dashboard">
         <h1>Bem-vindo ao Sistema de Cadastros</h1>
-        <p>Selecione uma opção no menu acima para continuar.</p>
-        <nav>
-            <a href="usuarios.html">Usuários</a>
-            <a href="cadastro.html">Cadastro</a>
-        </nav>
-       
+        <div class="menu-opcoes">
+            <a href="usuarios.html" class="card">Lista de Usuários</a>
+            <a href="cadastro.html" class="card">Cadastrar Usuário</a>
+        </div>
+
+        <!-- Botão de sair -->
+        <button id="logoutButton" class="btn-logout">Sair do Sistema</button>
     </main>
 
     <!-- Modal de confirmação de logout -->
-    <div id="logoutModal" class="modal">
+    <div id="logoutModal" class="modal-container">
         <div class="modal-content">
             <h2>Tem certeza que deseja sair do sistema?</h2>
             <p>Será necessário inserir as credenciais novamente para retornar.</p>
             <button id="confirmLogout" class="btn-confirm">Sim, sair</button>
             <button id="cancelLogout" class="btn-cancel">Cancelar</button>
         </div>
-    </div>
-
-    <div>
-         <!-- Botão de sair -->
-         <button id="logoutButton" class="btn-logout">Sair do Sistema</button>
     </div>
 
     <footer class="rodape">
