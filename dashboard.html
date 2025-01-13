@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sistema de Cadastros</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Home
+        </h1>
+    </header>
+    <main class="tela-dashboard">
+        <h1>Bem-vindo ao Sistema de Cadastros</h1>
+        <p>Selecione uma opção no menu acima para continuar.</p>
+        <nav>
+            <a href="usuarios.html">Usuários</a>
+            <a href="cadastro.html">Cadastro</a>
+        </nav>
+       
+    </main>
+
+    <!-- Modal de confirmação de logout -->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <h2>Tem certeza que deseja sair do sistema?</h2>
+            <p>Será necessário inserir as credenciais novamente para retornar.</p>
+            <button id="confirmLogout" class="btn-confirm">Sim, sair</button>
+            <button id="cancelLogout" class="btn-cancel">Cancelar</button>
+        </div>
+    </div>
+
+    <div>
+         <!-- Botão de sair -->
+         <button id="logoutButton" class="btn-logout">Sair do Sistema</button>
+    </div>
+
+    <footer class="rodape">
+        Desenvolvido por Samuel Neves. <br>
+        Contato: <a href="mailto:samuelventuri@outlook.com">samuelventuri@outlook.com</a>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

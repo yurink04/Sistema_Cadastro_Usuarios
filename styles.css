@@ -1,0 +1,311 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body_login {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: linear-gradient(45deg, #412485, yellow, #BB86FC);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: linear-gradient(45deg, #412485, yellow, #BB86FC);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Tela de Login */
+.tela-login {
+    background-color: rgba(0, 0, 0, 0.863);
+    padding: 2rem;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid #BB86FC;
+}
+
+h1 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: white;
+}
+
+form .entrada {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+/* Foco nos inputs */
+form .entrada:focus {
+    border: 2px solid #BB86FC;
+    background-color: rgba(255, 255, 255, 0.2);
+    outline: none;
+}
+
+button {
+    background-color: #412485;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #BB86FC;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Texto de ajuda */
+.ajuda {
+    margin-top: 1rem;
+    text-align: right;
+}
+
+.ajuda abbr {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #BB86FC;
+    cursor: help;
+}
+
+/* Ícone de carregamento */
+.loading {
+    margin-top: 1rem;
+    color: white;
+    display: none;
+}
+
+/* Modais */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+    color: #412485;
+}
+
+.modal.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid #BB86FC;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    background-color: #412485;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+/* Rodapé */
+.rodape {
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 0.9rem;
+    padding: 5px 0;
+}
+
+.rodape a {
+    color: #0c0414;
+    text-decoration: none;
+}
+
+.rodape a:hover {
+    text-decoration: underline;
+}
+
+/* Tabela de usuários */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.user-table th, .user-table td {
+    border: 1px solid #412485;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+.user-table th {
+    background-color: #412485;
+}
+
+.user-table tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.user-table tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.user-table tr:hover {
+    background-color: rgba(187, 134, 252, 0.3);
+}
+
+/* Botões da tabela */
+.user-table button {
+    background-color: #BB86FC;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.user-table button:hover {
+    background-color: #412485;
+    transform: scale(1.05);
+}
+
+/* Ajuste de Layout: Cadastro, Lista de Usuários e Dashboard */
+.tela-cadastro, .tela-lista-usuarios, .tela-dashboard {
+    display: flex; /* Garante o uso de flexbox */
+    flex-direction: column; /* Organiza verticalmente */
+    align-items: stretch; /* Garante que os elementos ocupem toda a largura */
+    gap: 2rem; /* Espaçamento entre os itens */
+    padding: 2rem;
+    width: 90%;
+    max-width: 1200px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    color: white;
+    margin: 2rem auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.tela-cadastro form, .tela-lista-usuarios form {
+    display: flex; /* Flexbox para organizar elementos */
+    flex-direction: column; /* Layout vertical */
+    align-items: stretch; /* Campos ocupam toda a largura */
+    gap: 1rem; /* Espaçamento entre os campos */
+}
+
+
+.tela-dashboard .card {
+    background-color: #412485;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s;
+}
+
+.tela-dashboard .card:hover {
+    transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .tela-login {
+        padding: 1.5rem;
+    }
+
+    .tela-cadastro, .tela-lista-usuarios, .tela-dashboard {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    form .entrada {
+        font-size: 0.9rem;
+        padding: 12px;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .tela-login {
+        width: 95%;
+    }
+
+    form .entrada {
+        font-size: 0.8rem;
+    }
+
+    button {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+}
+
+form .entrada, .user-table {
+    display: block; /* Remove possíveis layouts inline ou inline-block */
+    width: 100%; /* Ocupa toda a largura disponível */
+}
+
+
+@media (max-width: 768px) {
+    .tela-cadastro, .tela-lista-usuarios, .tela-dashboard {
+        display: flex;
+        flex-direction: column; /* Mantém o layout vertical */
+        padding: 1rem;
+    }
+}
+
