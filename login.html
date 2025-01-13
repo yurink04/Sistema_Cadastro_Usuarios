@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="body_login">
-    <div id="welcomeModal" class="modal">
+    <div id="welcomeModal" class="modal-container">
         <div class="modal-content">
             <h2>Bem-vindo ao Sistema de Cadastro</h2>
             <p>Por favor, faça login para continuar.</p>
@@ -21,18 +21,7 @@
             <input type="password" placeholder="Senha" class="entrada" id="senha" required>
             <button type="submit">Entrar</button>
         </form>
-        <div id="loadingIcon" class="loading">Carregando...</div>
-        <div id="modalErro" class="modal">
-            <div class="modal-content">
-                <p>Usuário ou senha inválidos!</p>
-                <button id="fecharErro">Fechar</button>
-            </div>
-        </div>
     </div>
-    <footer class="rodape">
-        Desenvolvido por Samuel Neves. <br>
-        Contato: <a href="mailto:samuelventuri@outlook.com">samuelventuri@outlook.com</a>
-    </footer>
     <script src="scripts.js"></script>
 </body>
 </html>

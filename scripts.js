@@ -3,16 +3,35 @@ const showModal = (modal) => modal?.classList.add('show');
 const hideModal = (modal) => modal?.classList.remove('show');
 
 // Modal de Boas-vindas
-const modal = document.getElementById('welcomeModal');
-const closeModal = document.getElementById('closeModal');
+const setupWelcomeModal = () => {
+    const welcomeModal = document.getElementById('welcomeModal');
+    const closeModal = document.getElementById('closeModal');
 
-if (modal && closeModal) {
-    window.addEventListener('load', () => showModal(modal));
-    closeModal.addEventListener('click', () => hideModal(modal));
-}
+    if (welcomeModal && closeModal) {
+        window.addEventListener('load', () => showModal(welcomeModal));
+        closeModal.addEventListener('click', () => hideModal(welcomeModal));
+    }
+};
+
+// Modal de Logout
+const setupLogoutModal = () => {
+    const logoutButton = document.getElementById('logoutButton');
+    const logoutModal = document.getElementById('logoutModal');
+    const confirmLogout = document.getElementById('confirmLogout');
+    const cancelLogout = document.getElementById('cancelLogout');
+
+    if (logoutButton && logoutModal) {
+        logoutButton.addEventListener('click', () => showModal(logoutModal));
+        confirmLogout?.addEventListener('click', () => {
+            hideModal(logoutModal);
+            window.location.href = 'login.html';
+        });
+        cancelLogout?.addEventListener('click', () => hideModal(logoutModal));
+    }
+};
 
 // Função de Login
-const handleLogin = () => {
+const setupLogin = () => {
     const loginForm = document.getElementById('loginForm');
     const loadingIcon = document.getElementById('loadingIcon');
     const modalErro = document.getElementById('modalErro');
@@ -40,14 +59,11 @@ const handleLogin = () => {
         }, 2000);
     });
 
-    // Fechar modal de erro ao clicar no botão
     fecharErro?.addEventListener('click', () => hideModal(modalErro));
 };
 
-handleLogin();
-
 // Cadastro de Usuários
-const handleCadastro = () => {
+const setupCadastro = () => {
     const formCadastro = document.getElementById('form-cadastro');
     const senhaInput = document.querySelector('.senha');
     const feedbackSenha = document.getElementById('feedbackSenha');
@@ -77,10 +93,8 @@ const handleCadastro = () => {
     });
 };
 
-handleCadastro();
-
 // Listagem de Usuários
-const handleListagem = () => {
+const setupListagem = () => {
     const userList = document.getElementById('user-list');
 
     if (!userList) return;
@@ -102,7 +116,7 @@ const handleListagem = () => {
                     </tr>`).join('')
                 : '<tr><td colspan="3">Nenhum usuário encontrado.</td></tr>';
         } catch (error) {
-            console.error(error);
+            console.error('Erro ao carregar a lista de usuários:', error);
             alert('Erro ao carregar a lista de usuários.');
         }
     };
@@ -130,19 +144,11 @@ const handleListagem = () => {
     };
 };
 
-handleListagem();
-
-// Botão de Logout e Modal
-const logoutButton = document.getElementById('logoutButton');
-const logoutModal = document.getElementById('logoutModal');
-const confirmLogout = document.getElementById('confirmLogout');
-const cancelLogout = document.getElementById('cancelLogout');
-
-if (logoutButton && logoutModal) {
-    logoutButton.addEventListener('click', () => showModal(logoutModal));
-    confirmLogout?.addEventListener('click', () => {
-        hideModal(logoutModal);
-        window.location.href = 'login.html';
-    });
-    cancelLogout?.addEventListener('click', () => hideModal(logoutModal));
-}
+// Inicializar funções ao carregar a página
+document.addEventListener('DOMContentLoaded', () => {
+    setupWelcomeModal();
+    setupLogoutModal();
+    setupLogin();
+    setupCadastro();
+    setupListagem();
+});
